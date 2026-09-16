@@ -1,0 +1,54 @@
+BERGEN DAILY DATA - CLEANING REPORT
+========================================
+
+Date range:  2021-01-01 to 2025-08-18
+Rows:        1691
+Columns:     16
+
+BIKES
+  Bike files loaded:           61
+  Missing bike months:         none
+  Duplicate bike trips removed: 9
+  Trips without valid started_at ignored: 0
+
+QUALITY CONTROL (coverage < 90% -> value set to NaN, within final date range)
+  Traffic observations rejected: 66
+  NO2 observations rejected:     1
+
+MISSING VALUES PER COLUMN
+  date                     0
+  rain_mm                  0
+  temp_c                   1
+  bike_trips               0
+  bike_avg_duration_min    0
+  traffic_count            83
+  no2_ug_m3                33
+  year                     0
+  month                    0
+  month_number             0
+  weekday                  0
+  weekday_number           0
+  is_weekend               0
+  season                   0
+  is_rainy                 0
+  rain_category            0
+
+SUMMARY STATISTICS
+                     min      max      mean    median
+  rain_mm            0.0     87.9      6.54      1.20
+  temp_c            -7.6     24.3      8.90      8.95
+  bike_trips        11.0   4083.0   1336.23   1199.00
+  traffic_count  15790.0  54379.0  40467.91  44341.50
+  no2_ug_m3          2.9     99.4     23.41     19.60
+
+WARNINGS
+  none
+
+NOTES
+  - No measurements were imputed or interpolated; missing values stay NaN.
+  - bike_trips is 0 only for days in a month whose bike file exists but has no trips;
+    days in months without a file are NaN.
+  - Bike trips are dated by LOCAL (Europe/Oslo) start time.
+  - Traffic: Danmarks plass ved ladestasjon, Felt == 'Totalt' only.
+  - rain_category bins (Dry 0, Light <5, Moderate 5-<20, Heavy >=20 mm) are project
+    analysis bins, not official meteorological classifications.
